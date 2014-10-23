@@ -9,15 +9,24 @@ output: pdf_document
 
 This is going to look at the mobile survey data from survey data collection done by Significance Labs. There are two surveys done, one for users that Smart Phones and users that Basic Phones. The idea of this report is to look at the usage of phones and demographics associated with different phones. This quick overview will go over the Survey Findings document provided and will also include code in R to show results.
 
+```{r}
+require(plyr)
+smart_phone <- read.csv(file="/users/bcarancibia/bca_mobilephone_BRF/data/Smart_Table.csv",head=TRUE,sep=",", stringsAsFactors=FALSE)
+```
+
+Quick summary stats of every variable
+```{r}
+summary(smart_phone)
+```
+
 __*Survey Findings Document*__
 
 __1. Smartphone ownership is really high among low-income populations in New York City.__
 
 This statment is not really true. If you look at the data presented and the statement in the text: "Of those who owned a phone, 84% of respondents owned a smartphone compared to 16% of respondents who owned a basic phone." 84% and 16% are calculated by total smart phone + total basic phone and dividing responses by total. In order for this statement to be true what needs to occur is finding what is defined as low-income and finding percentages.
 
+Count of below income:
 ```{r}
-require(plyr)
-smart_phone <- read.csv(file="/users/bcarancibia/bca_mobilephone_BRF/data/Smart_Table.csv",head=TRUE,sep=",", stringsAsFactors=FALSE)
 count(smart_phone, "income")
 ```
 
